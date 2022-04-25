@@ -9,7 +9,6 @@ require_once 'MotorWay.php';
 require_once 'PedestrianWay.php';
 require_once 'ResidentialWay.php';
 
-
 $motorWay = new MotorWay([]);
 $pedestrianWay = new PedestrianWay([]);
 $residentialWay = new ResidentialWay([]);
@@ -32,6 +31,7 @@ $motorWay -> addVehicle($car);
 $pedestrianWay -> addVehicle($car);
 $residentialWay -> addVehicle($car);
 
+
 $truck = new Truck(8000, 'red', 3, 'electric');
 //var_dump($truck);
 $motorWay -> addVehicle($truck);
@@ -44,9 +44,10 @@ $motorWay -> addVehicle($truckFull);
 $pedestrianWay -> addVehicle($truckFull);
 $residentialWay -> addVehicle($truckFull);
 
-var_dump($motorWay->getCurrentVehicles()); 
-var_dump($pedestrianWay->getCurrentVehicles()); 
-var_dump($residentialWay->getCurrentVehicles()); 
+
+//var_dump($motorWay->getCurrentVehicles()); 
+//var_dump($pedestrianWay->getCurrentVehicles()); 
+//var_dump($residentialWay->getCurrentVehicles()); 
 
 
 ?>
@@ -60,39 +61,53 @@ var_dump($residentialWay->getCurrentVehicles());
 </head>
 <body>
     <h2>Programmation orientée objet - Quêtes classe "vehicles"</h2>
-    <h3>Bicycle</h3>
+    <!--<h3>Bicycle</h3>
     <div> 
-        <p><?=$bicycle->forward()?></p>
+        <p><?=$bicycle->start()?></p>
     </div>
     <h3>Skateboard</h3>
     <div> 
-        <p><?=$skateboard->forward()?></p>
+        <p><?=$skateboard->start()?></p>
     </div>
     <h3>Car</h3>
-    <div> 
-        <p><?=$car->forward()?></p>
-        <p>Allowed energies: <?php
+    <div>-->
+        <p>
+            <?php
+            try{
+                $car->start();
+            }
+            catch(Exception $e){
+                $car->setParkBrake();
+                echo 'Exception received  : ' . $e->getMessage() . PHP_EOL;
+            }
+            finally{
+                echo '<br>'.'Ma voiture roule comme un donut';
+            }
+            $car->start();
+            ?>
+        </p>
+        <!--<p>Allowed energies: <?php
         foreach(Car::ALLOWED_ENERGIES as $value){
             echo $value.' ';
         }
-        ?></p>
+        ?></p>-->
     </div>
-    <h3>Truck</h3>
+    <!--<h3>Truck</h3>
     <div> 
-        <p><?=$truck->forward()?></p>
+        <p><?=$truck->start()?></p>
         <p><?=$truck->brake()?></p>
         <p>Charge :<?=$truck-> getCharge()?></p>
         <p><?=$truck->isFull()?></p>
     </div>
     <h3>Full truck</h3>
     <div> 
-        <p><?=$truckFull->forward()?></p>
+        <p><?=$truckFull->start()?></p>
         <p><?=$truckFull->brake()?></p>
         <p>Charge :<?=$truck-> getCharge()?></p>
         <p><?=$truck->isFull()?></p>
         <?php $truck->setCharge(8000)?>
         <p>Charge :<?=$truck-> getCharge()?></p>
         <p><?=$truck->isFull()?></p>
-    </div>
+    </div>-->
 </body>
 </html>

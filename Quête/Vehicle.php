@@ -12,7 +12,7 @@ class Vehicle{
         $this->nbSeats = $nbSeats;
     }
     
-    public function forward(): string
+    public function start(): string
     {
         $this->currentSpeed = 15;
         return "Go !";
