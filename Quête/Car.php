@@ -2,7 +2,7 @@
 
 require_once 'Vehicle.php';
 
-class Car extends Vehicle
+class Car extends Vehicle implements LightableInterface
 {
     private int $energyLevel;
     private bool $hasParkBrake =true;
@@ -59,5 +59,15 @@ class Car extends Vehicle
         parent::start();
 
         return 'Car has started';
+    }
+
+    public function switchOn()
+    {
+        return true;
+    }
+
+    public function switchOff()
+    {
+        return false;
     }
 }   

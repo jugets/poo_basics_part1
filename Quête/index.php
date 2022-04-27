@@ -61,16 +61,17 @@ $residentialWay -> addVehicle($truckFull);
 </head>
 <body>
     <h2>Programmation orientée objet - Quêtes classe "vehicles"</h2>
-    <!--<h3>Bicycle</h3>
+    <h3>Bicycle</h3>
     <div> 
         <p><?=$bicycle->start()?></p>
+        <p><?=$bicycle->switchOn()?></p>
     </div>
     <h3>Skateboard</h3>
     <div> 
         <p><?=$skateboard->start()?></p>
     </div>
     <h3>Car</h3>
-    <div>-->
+    <div>
         <p>
             <?php
             try{
@@ -83,6 +84,7 @@ $residentialWay -> addVehicle($truckFull);
             finally{
                 echo '<br>'.'Ma voiture roule comme un donut';
             }
+            echo '<p>'.$bicycle->switchOn().'</p>';
             $car->start();
             ?>
         </p>
